@@ -2,10 +2,12 @@ import connect from "@/app/dbConfig/dbConfig";
 import User from "@/models/userModel";
 import { NextResponse, NextRequest } from "next/server";
 import bcrypt from "bcryptjs";
-import { error } from "console";
+
 
 export async function POST(request: NextRequest) {
   try {
+    await connect();
+    
     const reqBody = await request.json();
     const { email, password, username } = reqBody;
     console.log(reqBody);
@@ -44,5 +46,3 @@ export async function POST(request: NextRequest) {
     return NextResponse.json({ error: error.message }, { status: 500 });
   }
 }
-
-await connect();
