@@ -14,7 +14,8 @@ export async function GET() {
         });
         return response;
     } catch (error: unknown) {
-        return NextResponse.json({ error: error.message }, { status: 500 });
+        const message = error instanceof Error ? error.message : "Logout failed";
+        return NextResponse.json({ error: message }, { status: 500 });
     }
         
     }

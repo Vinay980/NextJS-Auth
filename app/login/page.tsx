@@ -4,7 +4,6 @@ import Link from "next/link";
 import { useRouter } from "next/navigation";
 import axios from "axios";
 import toast from "react-hot-toast";
-import { useEffect,  } from "react";
 
 export default function Signup() {
   const router = useRouter()
@@ -12,8 +11,9 @@ export default function Signup() {
     email: "",
     password: "",
   });
-  const [buttonDisabled, setButtonDisabled] = React.useState(false);
   const [loading, setLoading] = React.useState(false);
+  const buttonDisabled = user.email.length === 0 || user.password.length === 0;
+
   const onLogin = async () => {
     try {
             setLoading(true);
@@ -21,21 +21,14 @@ export default function Signup() {
             console.log("Login success", response.data);
             toast.success("Login success");
             router.push("/profile");
-        } catch (error:any) {
-            console.log("Login failed", error.message);
-            toast.error(error.message);
+        } catch (error: unknown) {
+            const message = error instanceof Error ? error.message : "Login failed";
+            console.log("Login failed", message);
+            toast.error(message);
         } finally{
         setLoading(false);
         }
   };
-
-  useEffect(() => {
-        if(user.email.length > 0 && user.password.length > 0) {
-            setButtonDisabled(false);
-        } else{
-            setButtonDisabled(true);
-        }
-    }, [user]);
 
   return (
     <div className="flex flex-col items-center justify-center min-h-screen py-2">
@@ -61,6 +54,7 @@ export default function Signup() {
       />
       <button
         onClick={onLogin}
+        disabled={loading || buttonDisabled}
         className="mt-4 rounded-xl bg-gradient-to-r from-cyan-500 to-blue-600 px-6 py-3 font-semibold text-white shadow-lg transition duration-200 hover:from-cyan-600 hover:to-blue-700 hover:shadow-xl active:scale-[0.98] focus:outline-none focus:ring-4 focus:ring-cyan-200"
       >
         Login Here

@@ -1,5 +1,5 @@
 "use client";
-import React, { useEffect } from "react";
+import React from "react";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
 import axios from "axios";
@@ -13,19 +13,10 @@ export default function Signup() {
     username: "",
   });
   const [loading, setLoading] = React.useState(false);
-  const [btnDisabled, setBtnDisabled] = React.useState(false);
-
-  useEffect(() => {
-    if (
-      user.email.length > 0 &&
-      user.username.length > 0 &&
-      user.password.length > 0
-    ) {
-      setBtnDisabled(false);
-    } else {
-      setBtnDisabled(true);
-    }
-  }, [user]);
+  const btnDisabled =
+    user.email.length === 0 ||
+    user.username.length === 0 ||
+    user.password.length === 0;
 
   const onSignup = async () => {
     try {
@@ -33,9 +24,10 @@ export default function Signup() {
       const response = await axios.post("/api/users/signup", user);
       console.log("Signup success", response.data);
       router.push("/login");
-    } catch (error: any) {
-      console.log("Signup failed", error.message);
-      toast.error(error.message);
+    } catch (error: unknown) {
+      const message = error instanceof Error ? error.message : "Signup failed";
+      console.log("Signup failed", message);
+      toast.error(message);
     } finally {
       setLoading(false);
     }
@@ -96,7 +88,7 @@ export default function Signup() {
 
           <button
             onClick={onSignup}
-            disabled={loading}
+            disabled={loading || btnDisabled}
             className="mt-2 rounded-xl bg-gradient-to-r from-cyan-500 to-blue-600 px-6 py-3 font-semibold text-white shadow-lg transition duration-200 hover:from-cyan-600 hover:to-blue-700 hover:shadow-xl active:scale-[0.98] focus:outline-none focus:ring-4 focus:ring-cyan-200 disabled:cursor-not-allowed disabled:opacity-70"
           >
             {btnDisabled ? "No signup" : "Signup"}
