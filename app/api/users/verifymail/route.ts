@@ -1,10 +1,9 @@
-import {connect} from "@/dbConfig/dbConfig";
+import dbConnect from "@/app/dbConfig/dbConfig";
 import { NextRequest, NextResponse } from "next/server";
 import User from "@/models/userModel";
 
 
-
-connect()
+await dbConnect();
 
 
 export async function POST(request: NextRequest){
@@ -21,7 +20,7 @@ export async function POST(request: NextRequest){
         }
         console.log(user);
 
-        user.isVerfied = true;
+        user.isVerified = true;
         user.verifyToken = undefined;
         user.verifyTokenExpiry = undefined;
         await user.save();
