@@ -1,36 +1,105 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Next.js Authentication System
+
+A modern and secure authentication system built with Next.js and TypeScript. This project demonstrates a complete authentication workflow, including user registration, login, protected routes, form validation, and session management while following best practices for scalability and maintainability.
+
+## Features
+
+* User Registration
+* User Login
+* Protected Routes
+* Authentication State Management
+* Form Validation and Error Handling
+* Responsive and User-Friendly Interface
+* TypeScript Support
+* Modern Next.js App Router Architecture
+* Reusable Component-Based Structure
+
+## Tech Stack
+
+* Next.js
+* React.js
+* TypeScript
+* Tailwind CSS
+* JavaScript (ES6+)
 
 ## Getting Started
 
-First, run the development server:
+### Prerequisites
+
+* Node.js (v18 or later)
+* npm, yarn, pnpm, or bun
+
+### Installation
+
+1. Clone the repository:
+
+```bash
+git clone <repository-url>
+```
+
+2. Navigate to the project directory:
+
+```bash
+cd authentication-system
+```
+
+3. Install dependencies:
+
+```bash
+npm install
+```
+
+4. Start the development server:
 
 ```bash
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+5. Open your browser and visit:
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+```text
+http://localhost:3000
+```
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+## Project Structure
 
-## Learn More
+```text
+app/
+├── login/
+├── register/
+├── dashboard/
+├── components/
+├── hooks/
+├── utils/
+└── public/
+```
 
-To learn more about Next.js, take a look at the following resources:
+## Key Highlights
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+* Built using the latest Next.js App Router.
+* Type-safe development with TypeScript.
+* Clean and maintainable code architecture.
+* Optimized for performance and scalability.
+* Production-ready authentication flow.
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+## Future Improvements
 
-## Deploy on Vercel
+* Social Authentication (Google, GitHub)
+* Email Verification
+* Password Reset Functionality
+* Role-Based Access Control
+* Two-Factor Authentication (2FA)
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+## Contributing
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+Contributions are welcome. Feel free to fork the repository, create a feature branch, and submit a pull request.
+
+## License
+
+This project is licensed under the MIT License.
+
+## Author
+
+**Vinay Kumar Mahto**
+
+Frontend Developer passionate about building scalable, high-performance, and user-centric web applications using React.js, Next.js, and TypeScript.
